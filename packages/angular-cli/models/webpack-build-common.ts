@@ -114,6 +114,7 @@ export function getWebpackCommonConfig(
     resolve: {
       extensions: ['.ts', '.js'],
       modules: [nodeModules],
+      symlinks: !buildOptions.preserveSymlinks
     },
     resolveLoader: {
       modules: [nodeModules]

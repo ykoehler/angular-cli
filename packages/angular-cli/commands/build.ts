@@ -19,6 +19,7 @@ export interface BuildOptions {
   deployUrl?: string;
   outputHashing?: string;
   extractCss?: boolean | null;
+  preserveSymlinks?: boolean;
 }
 
 const BuildCommand = Command.extend({
@@ -54,7 +55,13 @@ const BuildCommand = Command.extend({
       values: ['none', 'all', 'media', 'bundles'],
       description: 'define the output filename cache-busting hashing mode'
     },
-    { name: 'extract-css',    type: Boolean, default: true }
+    { name: 'extract-css',    type: Boolean, default: true },
+    {
+      name: 'preserve-symlinks',
+      type: Boolean,
+      default: false,
+      description: 'Do not use the real path when resolving modules.'
+    }
   ],
 
   run: function (commandOptions: BuildOptions) {
